@@ -8,7 +8,7 @@ process PREFETCH {
     tuple val(meta), val(asc_id)
 
     output:
-    tuple val(meta), val(asc_id)
+    tuple val(meta), val(asc_id)            , emit: asc_id
 
     script:
     def prefix              = task.ext.prefix ?: "${meta}"

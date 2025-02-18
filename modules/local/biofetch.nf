@@ -27,7 +27,7 @@ workflow BIOFETCH {
     PREFETCH(
         result.SRA
     )
-    FASTERQ-DUMP(
+    FASTERQ_DUMP(
         PREFETCH.out.asc_id
     )
 

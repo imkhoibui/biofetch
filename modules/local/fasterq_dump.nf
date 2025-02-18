@@ -7,6 +7,9 @@ process FASTERQ_DUMP {
     input:
     tuple val(meta), val(asc_id)
 
+    output:
+    tuple val(meta), val(asc_id), path("*gz")
+
     script:
     def prefix              = task.ext.prefix ?: "${meta}"
     def args                = task.ext.args ?: ""
