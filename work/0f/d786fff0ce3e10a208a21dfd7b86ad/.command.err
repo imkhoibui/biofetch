@@ -1,0 +1,4 @@
+awk: cmd. line:1: { print substr(/home/bdkhoi/projects/biofetch/work/0f/d786fff0ce3e10a208a21dfd7b86ad/.command.sh, 1, 3)','/home/bdkhoi/projects/biofetch/work/0f/d786fff0ce3e10a208a21dfd7b86ad/.command.sh }
+awk: cmd. line:1:                                                                                      ^ syntax error
+awk: cmd. line:1: { print substr(/home/bdkhoi/projects/biofetch/work/0f/d786fff0ce3e10a208a21dfd7b86ad/.command.sh, 1, 3)','/home/bdkhoi/projects/biofetch/work/0f/d786fff0ce3e10a208a21dfd7b86ad/.command.sh }
+awk: cmd. line:1:                                                                                                       ^ 4 is invalid as number of arguments for substr

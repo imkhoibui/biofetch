@@ -1,0 +1,1 @@
+nextflow run main.nf -resume 2>&1 | tee headnote.log
