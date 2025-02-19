@@ -7,6 +7,26 @@ include { PREFETCH                               } from "${projectDir}/modules/l
 include { FASTERQ_DUMP                           } from "${projectDir}/modules/local/fasterq_dump.nf"
 
 workflow BIOFETCH {
+
+    // metadata features for ena report
+    def meta_features = []
+    for (item in params.ena_metadata) {
+        if (item.value) {
+            meta_features << item.key
+        }
+    }
+    def ena_result = "result=" + params.ena_result
+    def ena_fields = "fields=" + meta_features.join(',')
+    def ena_format = "format=" + params.ena_format
+    def ena_download = "download=" + params.ena_download
+    def ena_limit = "limit=" + params.ena_limit
+
+    def report_id = [ena_result, 
+        ena_fields, ena_format, 
+        ena_download, ena_limit].join("&")
+
+    ch_enameta = Channel.of(report_id)
+
     // retrieves ASC list
     if (params.link != null) {
         ch_link = Channel.of(params.link)
@@ -38,7 +58,8 @@ workflow BIOFETCH {
 
     // db down for ERR
     GET_ENA(
-        result.ENA
+        result.ENA,
+        ch_enameta.first()
     )
 
     // db down for GEO

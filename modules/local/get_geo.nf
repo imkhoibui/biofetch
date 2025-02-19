@@ -18,8 +18,11 @@ process GET_GEO {
     import GEOparse
     import os
 
+    os.makedirs("./${asc_id}", exist_ok=True)
+
     gse = GEOparse.get_GEO(
-        geo="${asc_id}"
+        geo="${asc_id}",
+        destdir="./${asc_id}"
     )
     """
 

@@ -4,24 +4,32 @@ process GET_ENA {
 
     input:
     tuple val(meta), val(asc_id)
+    val ena_meta
 
     output:
-    tuple val(meta), val(asc_id), path("*gz")
+    tuple val(meta), val(asc_id), path("*gz")       , emit: ena_data
+    tuple val(meta), val(asc_id), path("*tsv")      , emit: ena_report
 
     script:
     def format             = task.ext.format ?: "fastq"
     def compress           = task.ext.compress ?: "gz"
-    def sitelink           = task.ext.ena_link ?: "ftp://ftp.sra.ebi.ac.uk/vol1"
+    def base_data_link     = task.ext.ena_link ?: "ftp://ftp.sra.ebi.ac.uk/vol1"
+    def base_meta_link     = task.ext.ena_metada_link ?: "https://www.ebi.ac.uk/ena/portal/api/filereport?"
     def vol                = "${asc_id}".take(6)
     def bucket             = "00${asc_id[-1]}/"
 
     def filename_f         = "${asc_id}_1.${format}.${compress}"
     def filename_r         = "${asc_id}_2.${format}.${compress}"
-    def filelink_f         = "${sitelink}/${format}/${vol}/${bucket}${asc_id}/${filename_f}"
-    def filelink_r         = "${sitelink}/${format}/${vol}/${bucket}${asc_id}/${filename_r}"
+    def filelink_f         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_f}"
+    def filelink_r         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_r}"
+
+    def meta_id            = "accession=${asc_id}&${ena_meta}"
+    def metadata_file      = "${asc_id}_metadata.tsv"
+    def metadata_link      = "${base_meta_link}${meta_id}"
 
     """
     curl -o $filename_f "$filelink_f"
     curl -o $filename_r "$filelink_r"
+    curl -o $metadata_file "$metadata_link"
     """
 }
