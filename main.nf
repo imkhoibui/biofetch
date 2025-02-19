@@ -1,8 +1,7 @@
 #!/usr/bin/env nextflow
-
-include { BIOFETCH                              } from "${projectDir}/modules/local/biofetch.nf"
+include { BIOFETCH                              } from "${projectDir}/workflows/biofetch.nf"
 
 workflow {
-
+    
     BIOFETCH()
 }
