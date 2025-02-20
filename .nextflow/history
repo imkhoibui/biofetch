@@ -175,3 +175,8 @@
 2025-02-20 09:51:49	7.8s	small_laplace	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
 2025-02-20 09:52:38	8.2s	furious_lamarr	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
 2025-02-20 09:54:41	8.7s	serene_minsky	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 09:58:12	8.8s	mad_mirzakhani	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 10:06:09	3.9s	high_bartik	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 10:07:13	2.3s	small_boltzmann	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 10:07:50	1m 55s	confident_bassi	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 10:17:20	1m 35s	astonishing_bohr	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume

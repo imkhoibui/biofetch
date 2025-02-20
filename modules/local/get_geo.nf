@@ -25,12 +25,14 @@ process GET_GEO {
     gse = GEOparse.get_GEO(
         geo="${asc_id}"
     )
-    
+
+    gse.download_supplementary_files("${asc_id}/", 
+            download_sra=False)
+            
     metadata = pd.DataFrame()
     for gsm_name, gsm in gse.gsms.items():
         for key, value in gsm.metadata.items():
             metadata.loc[gsm_name, key] = ''.join(value)
-
     metadata.to_csv("${asc_id}/metadata.tsv", sep="\t", header = True)
         
     """
