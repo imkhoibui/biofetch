@@ -8,7 +8,7 @@ process GET_ENA {
 
     output:
     tuple val(meta), val(asc_id), path("*gz")       , emit: ena_data
-    tuple val(meta), val(asc_id), path("*tsv")      , emit: ena_report
+    tuple val(meta), val(asc_id), path("*tsv")      , emit: ena_meta
 
     script:
     def format             = task.ext.format ?: "fastq"
