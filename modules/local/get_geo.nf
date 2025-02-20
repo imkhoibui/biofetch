@@ -27,7 +27,7 @@ process GET_GEO {
     )
 
     gse.download_supplementary_files("${asc_id}/", 
-            download_sra=False)
+            download_sra=True)
             
     metadata = pd.DataFrame()
     for gsm_name, gsm in gse.gsms.items():

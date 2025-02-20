@@ -17,19 +17,30 @@ process GET_ENA {
     def base_meta_link     = task.ext.ena_metada_link ?: "https://www.ebi.ac.uk/ena/portal/api/filereport?"
     def vol                = "${asc_id}".take(6)
     def bucket             = "00${asc_id[-1]}/"
+    def single_end         = task.ext.single_end ?: false
 
-    def filename_f         = "${asc_id}_1.${format}.${compress}"
-    def filename_r         = "${asc_id}_2.${format}.${compress}"
-    def filelink_f         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_f}"
-    def filelink_r         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_r}"
+    def filename_f, filename_r, filelink_f, filelink_r
+    if (!single_end) {
+        filename_f         = "${asc_id}_1.${format}.${compress}"
+        filename_r         = "${asc_id}_2.${format}.${compress}"
+        filelink_f         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_f}"
+        filelink_r         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_r}"
+    } else {
+        filename_f         = "${asc_id}.${format}.${compress}"
+        filelink_f         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_f}"
+    }
 
     def meta_id            = "accession=${asc_id}&${ena_meta}"
     def metadata_file      = "${asc_id}_metadata.tsv"
     def metadata_link      = "${base_meta_link}${meta_id}"
 
+    println filename_f
     """
-    curl -o $filename_f "$filelink_f"
-    curl -o $filename_r "$filelink_r"
+    mkdir ${asc_id}
+    curl -o "${asc_id}/${filename_f}" "${filelink_f}"
+    if $single_end ?: curl -o "${asc_id}/${filename_r}" "${filelink_r}"
     curl -o $metadata_file "$metadata_link"
     """
 }
+
+

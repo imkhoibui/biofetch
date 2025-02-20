@@ -180,3 +180,23 @@
 2025-02-20 10:07:13	2.3s	small_boltzmann	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
 2025-02-20 10:07:50	1m 55s	confident_bassi	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
 2025-02-20 10:17:20	1m 35s	astonishing_bohr	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 11:03:51	2m 4s	stupefied_poincare	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 13:17:24	-	elated_raman	-	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input GSE123124 --outdir data/ -resume
+2025-02-20 13:17:41	2s	chaotic_celsius	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input GSE123124 --outdir data/ -resume
+2025-02-20 13:18:18	3s	stoic_pare	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input GSE123124 --outdir data/ -resume
+2025-02-20 13:19:07	2.1s	curious_jang	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input data/monocole-metadata.csv --outdir data/ -resume
+2025-02-20 13:19:22	39.7s	astonishing_lalande	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input data/monocle-metadata.csv --outdir data/ -resume
+2025-02-20 13:20:56	37.1s	extravagant_stonebraker	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input data/data.csv --outdir data/ -resume
+2025-02-20 14:27:40	21.7s	focused_euclid	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:15:48	2.4s	intergalactic_feynman	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:16:45	2.5s	spontaneous_lamarck	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:18:54	2.6s	hopeful_albattani	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:19:23	3s	curious_church	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:22:06	2.3s	hungry_golick	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:23:15	2.6s	shrivelled_waddington	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:24:03	-	desperate_leakey	-	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:24:45	2.3s	elated_mccarthy	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:26:13	-	big_moriondo	-	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:26:49	-	high_gates	-	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:27:11	5.6s	backstabbing_dijkstra	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:27:33	5.6s	sharp_solvay	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume

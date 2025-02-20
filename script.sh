@@ -1,4 +1,4 @@
 nextflow run main.nf \
-    --link  GSE123124 \
+    --input ERR14129305 \
     --outdir data/ \
     -resume 2>&1 | tee headnote.log
