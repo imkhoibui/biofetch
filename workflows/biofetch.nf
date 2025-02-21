@@ -15,8 +15,6 @@ workflow BIOFETCH {
         )
         GET_ASC(ch_samplesheet)
         ch_asc_list = GET_ASC.out.asc.splitCsv( header: params.header )
-        
-
     } else {
 
         ch_link = Channel.of(params.input)
@@ -25,13 +23,13 @@ workflow BIOFETCH {
         }
     }
 
-
     // divide asc_ids into databases
     ch_asc_list.branch { 
         ENA: it[0] == "ERR"
         SRA: it[0] == "SRA"
         GEO: it[0] == "GSE"
     }.set{ result }
+
 
     // metadata features for ena report
     def meta_features = []
@@ -71,4 +69,10 @@ workflow BIOFETCH {
     GET_GEO(
         result.GEO
     )
+
+    // ch_geo_links = GET_GEO.out.geo_data_links.splitText()
+    // CURL_FILES_FROM_LINK(
+    //     ch_geo_links,
+    //     GET_GEO.out.geo_folder
+    // )
 }

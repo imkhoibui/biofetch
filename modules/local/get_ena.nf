@@ -25,9 +25,13 @@ process GET_ENA {
         filename_r         = "${asc_id}_2.${format}.${compress}"
         filelink_f         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_f}"
         filelink_r         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_r}"
+
+        // def down_cmd       = "curl -o ${filename_f} ${filelink_f} ... "
     } else {
         filename_f         = "${asc_id}.${format}.${compress}"
         filelink_f         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_f}"
+
+        // def down_cmd       = "curl -o ${filename_f} ${filelink_f} ... "
     }
 
     def meta_id            = "accession=${asc_id}&${ena_meta}"
