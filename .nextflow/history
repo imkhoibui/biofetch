@@ -156,3 +156,71 @@
 2025-02-19 16:23:39	37.6s	trusting_euclid	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --samplesheet data/data.csv --outdir data/ -resume
 2025-02-19 16:26:59	18.7s	cheesy_swanson	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --samplesheet data/data.csv --outdir data/ -resume
 2025-02-19 16:27:36	40.8s	wise_snyder	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --samplesheet data/data.csv --outdir data/ -resume
+2025-02-20 09:02:41	2.3s	golden_mestorf	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --samplesheet GSE123421 --outdir data/ -resume
+2025-02-20 09:02:58	12.4s	insane_gutenberg	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123421 --outdir data/ -resume
+2025-02-20 09:09:04	10.2s	sad_fermat	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123421 --outdir data/ -resume
+2025-02-20 09:12:00	8.7s	admiring_liskov	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123421 --outdir data/ -resume
+2025-02-20 09:14:11	9.3s	desperate_euclid	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123421 --outdir data/ -resume
+2025-02-20 09:14:49	8.3s	berserk_coulomb	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123421 --outdir data/ -resume
+2025-02-20 09:19:30	11.1s	curious_colden	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123422 --outdir data/ -resume
+2025-02-20 09:27:58	2.5s	sharp_goldwasser	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSM123124 --outdir data/ -resume
+2025-02-20 09:30:16	2.5s	drunk_lamarck	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSM123124 --outdir data/ -resume
+2025-02-20 09:30:32	13.8s	modest_stone	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 09:32:33	4.1s	sleepy_cori	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 09:34:47	8.3s	prickly_becquerel	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 09:45:02	-	trusting_solvay	-	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 09:45:45	28.5s	boring_booth	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 09:47:42	7.6s	sick_wiles	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 09:49:53	8.3s	maniac_descartes	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 09:51:49	7.8s	small_laplace	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 09:52:38	8.2s	furious_lamarr	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 09:54:41	8.7s	serene_minsky	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 09:58:12	8.8s	mad_mirzakhani	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 10:06:09	3.9s	high_bartik	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 10:07:13	2.3s	small_boltzmann	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 10:07:50	1m 55s	confident_bassi	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 10:17:20	1m 35s	astonishing_bohr	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 11:03:51	2m 4s	stupefied_poincare	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --link GSE123124 --outdir data/ -resume
+2025-02-20 13:17:24	-	elated_raman	-	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input GSE123124 --outdir data/ -resume
+2025-02-20 13:17:41	2s	chaotic_celsius	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input GSE123124 --outdir data/ -resume
+2025-02-20 13:18:18	3s	stoic_pare	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input GSE123124 --outdir data/ -resume
+2025-02-20 13:19:07	2.1s	curious_jang	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input data/monocole-metadata.csv --outdir data/ -resume
+2025-02-20 13:19:22	39.7s	astonishing_lalande	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input data/monocle-metadata.csv --outdir data/ -resume
+2025-02-20 13:20:56	37.1s	extravagant_stonebraker	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input data/data.csv --outdir data/ -resume
+2025-02-20 14:27:40	21.7s	focused_euclid	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:15:48	2.4s	intergalactic_feynman	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:16:45	2.5s	spontaneous_lamarck	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:18:54	2.6s	hopeful_albattani	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:19:23	3s	curious_church	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:22:06	2.3s	hungry_golick	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:23:15	2.6s	shrivelled_waddington	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:24:03	-	desperate_leakey	-	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:24:45	2.3s	elated_mccarthy	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:26:13	-	big_moriondo	-	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:26:49	-	high_gates	-	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:27:11	5.6s	backstabbing_dijkstra	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-20 15:27:33	5.6s	sharp_solvay	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR14129305 --outdir data/ -resume
+2025-02-21 08:26:55	2.6s	mad_shaw	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --outdir data/ -resume
+2025-02-21 08:27:30	2.4s	boring_coulomb	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --outdir data/ -resume
+2025-02-21 08:28:39	6.9s	mad_dijkstra	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --outdir data/ -resume
+2025-02-21 08:28:53	6.7s	mad_linnaeus	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --outdir data/ -resume
+2025-02-21 08:29:45	7.4s	lethal_watson	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single-end false --outdir data/ -resume
+2025-02-21 08:30:56	2m 5s	berserk_colden	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 08:33:42	2m 34s	infallible_galileo	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 08:37:42	2m 5s	exotic_almeida	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:01:23	31s	stupefied_borg	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:06:42	2.7s	nostalgic_lamarr	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:07:38	32.3s	cheeky_williams	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:10:40	31.4s	friendly_hamilton	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:13:09	33.7s	jolly_jang	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:15:46	34.5s	big_noyce	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:17:44	25.1s	reverent_swartz	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:18:45	37.5s	gigantic_payne	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:20:11	31.3s	golden_gauss	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:21:37	31.5s	chaotic_montalcini	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:23:35	36.4s	nostalgic_noether	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:24:58	24.5s	drunk_becquerel	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:26:20	34.2s	fervent_kirch	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:27:46	1m	drunk_brenner	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:29:32	30.3s	backstabbing_wozniak	ERR	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume
+2025-02-21 09:31:26	1m 16s	dreamy_meninsky	OK	76edaaa6691e80c1743a4a1695205122	cbcc180c-9d6a-4917-a22a-764b655585d5	nextflow run main.nf --input ERR980217 --single_end false --outdir data/ -resume

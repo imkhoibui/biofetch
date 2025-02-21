@@ -8,6 +8,31 @@ include { FASTERQ_DUMP                           } from "${projectDir}/modules/l
 
 workflow BIOFETCH {
 
+    // retrieves ASC list
+    if (file(params.input).exists()) {
+        ch_samplesheet = Channel.fromPath(
+            params.input, checkIfExists: true
+        )
+        GET_ASC(ch_samplesheet)
+        ch_asc_list = GET_ASC.out.asc.splitCsv( header: params.header )
+        
+
+    } else {
+
+        ch_link = Channel.of(params.input)
+        ch_asc_list = ch_link.map {
+            link -> tuple(link.take(3), link)
+        }
+    }
+
+
+    // divide asc_ids into databases
+    ch_asc_list.branch { 
+        ENA: it[0] == "ERR"
+        SRA: it[0] == "SRA"
+        GEO: it[0] == "GSE"
+    }.set{ result }
+
     // metadata features for ena report
     def meta_features = []
     for (item in params.ena_metadata) {
@@ -15,38 +40,18 @@ workflow BIOFETCH {
             meta_features << item.key
         }
     }
-    def ena_result = "result=" + params.ena_result
-    def ena_fields = "fields=" + meta_features.join(',')
-    def ena_format = "format=" + params.ena_format
-    def ena_download = "download=" + params.ena_download
-    def ena_limit = "limit=" + params.ena_limit
+    def ena_result      = "result=" + params.ena_result
+    def ena_fields      = "fields=" + meta_features.join(',')
+    def ena_format      = "format=" + params.ena_format
+    def ena_download    = "download=" + params.ena_download
+    def ena_limit       = "limit=" + params.ena_limit
 
-    def report_id = [ena_result, 
+    def meta_id = [ena_result, 
         ena_fields, ena_format, 
         ena_download, ena_limit].join("&")
 
-    ch_enameta = Channel.of(report_id)
+    ch_enameta = Channel.of(meta_id)
 
-    // retrieves ASC list
-    if (params.link != null) {
-        ch_link = Channel.of(params.link)
-        ch_asc_list = ch_link.map {
-            link -> tuple(link.take(3), link)
-        }
-
-    } else if (params.samplesheet != null) {
-        ch_samplesheet = Channel.fromPath(
-            params.samplesheet, checkIfExists: true
-        )
-        GET_ASC(ch_samplesheet)
-        ch_asc_list = GET_ASC.out.asc.splitCsv( header: params.header )
-    }
-    // divide database
-    ch_asc_list.branch { 
-        ENA: it[0] == "ERR"
-        SRA: it[0] == "SRA"
-        GEO: it[0] == "GSE"
-    }.set{ result }
 
     // db down for SRA
     PREFETCH(
