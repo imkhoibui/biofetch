@@ -47,7 +47,7 @@ process GET_GEO {
         filename = "${asc_id}/" + link.split('/')[-1]
         r = requests.get(link, stream = True)
         with open(filename, "wb") as file:
-            for chunk in response.iter_content(chunk_size=8192):
+            for chunk in r.iter_content(chunk_size=8192):
                 file.write(chunk)
 
     metadata = pd.DataFrame()

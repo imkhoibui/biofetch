@@ -7,8 +7,8 @@ process GET_ENA {
     val ena_meta
 
     output:
-    tuple val(meta), val(asc_id), path("${asc_id}/*gz")       , emit: ena_data
-    tuple val(meta), val(asc_id), path("*tsv")      , emit: ena_meta
+    tuple val(meta), val(asc_id), path("*fastq.gz")           , emit: ena_data
+    tuple val(meta), val(asc_id), path("*tsv")                , emit: ena_meta
 
     script:
     def format             = task.ext.format ?: "fastq"
@@ -19,19 +19,18 @@ process GET_ENA {
     def bucket             = "${asc_id}".length() == 9 ? "" : "00${asc_id[-1]}/"
     def single_end         = params.single_end ?: false
 
-    def filename_f, filename_r, filelink_f, filelink_r
+    def filename_f, filename_r, filelink_f, filelink_r, down_cmd
     if (!single_end) {
         filename_f         = "${asc_id}_1.${format}.${compress}"
         filename_r         = "${asc_id}_2.${format}.${compress}"
         filelink_f         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_f}"
         filelink_r         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_r}"
+        down_cmd           = "curl -o ${filename_f} ${filelink_f} \ curl -o ${filename_r} ${filelink_r}"
 
-        // def down_cmd       = "curl -o ${filename_f} ${filelink_f} ... "
     } else {
         filename_f         = "${asc_id}.${format}.${compress}"
         filelink_f         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_f}"
-
-        // def down_cmd       = "curl -o ${filename_f} ${filelink_f} ... "
+        down_cmd           = "curl -o ${filename_f} ${filelink_f}"
     }
 
     def meta_id            = "accession=${asc_id}&${ena_meta}"
@@ -39,12 +38,11 @@ process GET_ENA {
     def metadata_link      = "${base_meta_link}${meta_id}"
 
     """
-    mkdir ${asc_id}
-    curl -o "${asc_id}/${filename_f}" "${filelink_f}"
-    if ! $single_end ; then 
-        curl -o "${asc_id}/${filename_r}" "${filelink_r}" 
-    fi
-    curl -o "${metadata_file}" "${metadata_link}"
+    #!/usr/bin/bash 
+
+    ${down_cmd}
+
+    curl -o ${metadata_file} ${metadata_link}
     """
 }
 

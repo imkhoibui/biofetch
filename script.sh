@@ -1,5 +1,5 @@
 nextflow run main.nf \
-    --input ERR980217 \
+    --input GSE22001 \
     --single_end false \
     --outdir data/ \
     -resume 2>&1 | tee headnode.log
