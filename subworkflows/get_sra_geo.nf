@@ -23,20 +23,18 @@ workflow GET_SRA_GEO {
     | map { row -> row['SRX'] }
     | set { ch_geo_sra }
     
-    ch_geo_sra.view()
-
     GET_SRA_FROM_SRX (
         ch_geo_sra
     )
 
     GET_SRA_FROM_SRX.out.geo_sra
-    | splitCsv(header: true)
-    | map { row -> row['Run'] }
-    | set { ch_sra}
+    | splitCsv(skip:1)
+    | set { ch_sra }
 
     PREFETCH_GEO (
-        ch_sra.map { [ [:], it ] }
+        ch_sra.map { [ [:], it[0] ] }
     )
+    
     FASTERQ_DUMP_GEO (
         PREFETCH_GEO.out.prefetch_path
     )
