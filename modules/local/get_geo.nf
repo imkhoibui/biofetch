@@ -8,7 +8,8 @@ process GET_GEO {
     tuple val(meta), val(asc_id)
 
     output:
-    // path("${asc_id}/data_urls.txt")                                 , emit: geo_data
+    // path("${asc_id}/data_urls.txt")                               , emit: geo_data
+    path("${asc_id}_family*")                                               , emit: geo_docs
     tuple val(meta), val(asc_id), path("${asc_id}/*")                , emit: geo_folder   
 
     script:
@@ -18,7 +19,7 @@ process GET_GEO {
     def outdir              = params.outdir ?: "./"
     """
     python3 ${projectDir}/bin/get_geo.py --asc_id ${asc_id} --suppl_data_link ${suppl_data_link}
+    gunzip ${asc_id}_family.soft.gz
         
     """
-
 }

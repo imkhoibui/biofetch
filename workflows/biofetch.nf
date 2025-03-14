@@ -1,10 +1,12 @@
 #!/usr/bin/env nextflow
 include { GET_ASC                                } from "${projectDir}/modules/local/fetch_asc.nf"
 include { GET_GEO                                } from "${projectDir}/modules/local/get_geo.nf"
+include { GET_GEO_SRX                            } from "${projectDir}/modules/local/extract_srx.nf"
 include { GET_ENA                                } from "${projectDir}/modules/local/get_ena.nf"
 include { CURL_FILES_FROM_LINK                   } from "${projectDir}/modules/local/curl_files.nf"
 include { PREFETCH                               } from "${projectDir}/modules/local/prefetch.nf"
 include { FASTERQ_DUMP                           } from "${projectDir}/modules/local/fasterq_dump.nf"
+include { GET_SRA_GEO                            } from "${projectDir}/subworkflows/get_sra_geo.nf"
 
 workflow BIOFETCH {
 
@@ -26,7 +28,7 @@ workflow BIOFETCH {
     // divide asc_ids into databases
     ch_asc_list.branch { 
         ENA: it[0] == "ERR"
-        SRA: it[0] == "SRA"
+        SRA: it[0] == "SRR"
         GEO: it[0] == "GSE"
     }.set{ result }
 
@@ -52,27 +54,34 @@ workflow BIOFETCH {
 
 
     // db down for SRA
-    PREFETCH(
-        result.SRA
-    )
-    FASTERQ_DUMP(
-        PREFETCH.out.asc_id
-    )
+    if ( !params.skip_sra ) {
+        PREFETCH(
+            result.SRA
+        )
+
+        FASTERQ_DUMP(
+            PREFETCH.out.prefetch_path
+        )
+    }
+
 
     // db down for ERR
-    GET_ENA(
-        result.ENA,
-        ch_enameta.first()
-    )
+    if ( !params.skip_ena ) {
+        GET_ENA(
+            result.ENA,
+            ch_enameta.first()
+        )
+    }
 
     // db down for GEO
-    GET_GEO(
-        result.GEO
-    )
-
-    // ch_geo_links = GET_GEO.out.geo_data_links.splitText()
-    // CURL_FILES_FROM_LINK(
-    //     ch_geo_links,
-    //     GET_GEO.out.geo_folder
-    // )
+    if ( !params.skip_geo ) {
+        GET_SRA_GEO (
+            result.GEO
+        )
+        // ch_geo_links = GET_GEO.out.geo_data.splitText()
+        // CURL_FILES_FROM_LINK(
+        //     ch_geo_links,
+        //     GET_GEO.out.geo_folder
+        // )
+    }
 }
