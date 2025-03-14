@@ -11,7 +11,7 @@ process GET_ASC {
     """
     #!/usr/bin/env bash
 
-    pattern="^(GEO|ERR|SRA)[0-9]+"
+    pattern="^(GEO|ERR|SRR|SRA|GSE)[0-9]+"
 
     awk -v b="\$pattern" -F',' '{
         for (i=1;i<=NF;i++) { 

@@ -1,16 +1,19 @@
 #!/usr/bin/env nextflow
 
 process CURL_FILES_FROM_LINK {
-    tag "${asc_id}"
-
     input:
-    tuple val(meta), val(asc_id)
+    val link
+    tuple val(meta), val(asc_id), path("${asc_id}/")
 
     output:
-    tuple val(meta)
+    val("${asc_id}/*")
 
     script:
     """
-    
+    #!/usr/bin/bash 
+
+    cd $asc_id
+    curl -O $link
+    cd ..
     """
 }

@@ -8,33 +8,18 @@ process GET_GEO {
     tuple val(meta), val(asc_id)
 
     output:
-    tuple val(meta), val(asc_id), path("${asc_id}/")               , optional: true, emit: geo_data
-    tuple val(meta), val(asc_id), path("${asc_id}/*.csv")          , optional: true, emit: geo_meta   
+    // path("${asc_id}/data_urls.txt")                               , emit: geo_data
+    path("${asc_id}_family*")                                        , emit: geo_docs
+    tuple val(meta), val(asc_id), path("${asc_id}/*")                , emit: geo_folder   
 
     script:
+    def base_data_link      = task.ext.geo_link ?: "https://ftp.ncbi.nlm.nih.gov/geo/series"
+    def bucket              = "${asc_id}"[0..-4]
+    def suppl_data_link     = "${base_data_link}/${bucket}nnn/${asc_id}/suppl/"
     def outdir              = params.outdir ?: "./"
     """
-    #!/usr/bin/env python3
-
-    import GEOparse
-    import pandas as pd
-    import os
-
-    os.makedirs("./${asc_id}", exist_ok=True)
-
-    gse = GEOparse.get_GEO(
-        geo="${asc_id}"
-    )
-
-    gse.download_supplementary_files("${asc_id}/", 
-            download_sra=True)
-            
-    metadata = pd.DataFrame()
-    for gsm_name, gsm in gse.gsms.items():
-        for key, value in gsm.metadata.items():
-            metadata.loc[gsm_name, key] = ''.join(value)
-    metadata.to_csv("${asc_id}/metadata.tsv", sep="\t", header = True)
+    python3 ${projectDir}/bin/get_geo.py --asc_id ${asc_id} --suppl_data_link ${suppl_data_link}
+    gunzip ${asc_id}_family.soft.gz
         
     """
-
 }
