@@ -20,7 +20,7 @@ workflow GET_SRA_GEO {
 
     GET_GEO_SRX.out.geo_srx
     | splitCsv(header: true)
-    | map { row -> row['SRX'] }
+    | map { row -> tuple (row['Sample'],row['SRX']) }
     | set { ch_geo_sra }
     
     GET_SRA_FROM_SRX (
@@ -32,7 +32,7 @@ workflow GET_SRA_GEO {
     | set { ch_sra }
 
     PREFETCH_GEO (
-        ch_sra.map { [ [:], it[0] ] }
+        ch_sra.map { meta, asc_id -> [ meta, asc_id[0] ] }
     )
     
     FASTERQ_DUMP_GEO (

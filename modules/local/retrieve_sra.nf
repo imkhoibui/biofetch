@@ -4,10 +4,10 @@ process GET_SRA_FROM_SRX  {
     container "pegi3s/entrez-direct"
 
     input:
-    val geo_srx
+    tuple val(meta), val(geo_srx)
 
     output:
-    path("*.csv"), emit: geo_sra
+    tuple val(meta), path("*.csv"), emit: geo_sra
 
     script:
     def prefix              = task.ext.prefix ?: "${geo_srx}"
