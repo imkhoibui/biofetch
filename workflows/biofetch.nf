@@ -75,13 +75,20 @@ workflow BIOFETCH {
 
     // db down for GEO
     if ( !params.skip_geo ) {
-        GET_SRA_GEO (
-            result.GEO
-        )
+        if ( !params.skip_geo_fastq ) {
+            GET_SRA_GEO (
+                result.GEO
+            )
+        } else {
+            GET_GEO (
+                result.GEO
+            )            
+        }
         // ch_geo_links = GET_GEO.out.geo_data.splitText()
         // CURL_FILES_FROM_LINK(
         //     ch_geo_links,
         //     GET_GEO.out.geo_folder
         // )
     }
+
 }

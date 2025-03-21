@@ -1,6 +1,7 @@
 #!/usr/bin/env nextflow
 process GET_ENA {
     tag "${asc_id}"
+    label 'process_high'
 
     input:
     tuple val(meta), val(asc_id)

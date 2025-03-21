@@ -1,5 +1,6 @@
 process GET_GEO_SRX {
     tag "${geo_docs.baseName}"
+    label 'process_single'
 
     container "community.wave.seqera.io/library/pip_geoparse_pandas:24e5b15a83985023"
 
