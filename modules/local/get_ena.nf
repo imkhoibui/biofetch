@@ -8,7 +8,7 @@ process GET_ENA {
     val ena_meta
 
     output:
-    tuple val(meta), val(asc_id), path("*fastq.gz")           , emit: ena_data
+    tuple val(meta), val(asc_id), path("*fastq.gz")           , emit: fastq
     tuple val(meta), val(asc_id), path("*tsv")                , emit: ena_meta
 
     script:
@@ -33,7 +33,7 @@ process GET_ENA {
         filename_r         = "${asc_id}_2.${format}.${compress}"
         filelink_f         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_f}"
         filelink_r         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_r}"
-        down_cmd           = "curl -o ${filename_f} ${filelink_f} && curl -o ${filename_r} ${filelink_r}"
+        down_cmd           = "curl -o ${filename_f} '${filelink_f}' && curl -o ${filename_r} '${filelink_r}'"
     } else {
         filename_f         = "${asc_id}.${format}.${compress}"
         filelink_f         = "${base_data_link}/${format}/${vol}/${bucket}${asc_id}/${filename_f}"

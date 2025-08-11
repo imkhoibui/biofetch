@@ -9,7 +9,7 @@ process FASTERQ_DUMP {
     tuple val(meta), val(asc_id), path(prefetch_path)
 
     output:
-    tuple val(meta), val(asc_id), path("*fastq.gz")
+    tuple val(meta), val(asc_id), path("*fastq.gz")         , emit: fastq
 
     script:
     def prefix              = task.ext.prefix ?: "${meta}"

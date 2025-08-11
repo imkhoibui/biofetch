@@ -39,4 +39,7 @@ workflow GET_SRA_GEO {
     FASTERQ_DUMP_GEO (
         PREFETCH_GEO.out.prefetch_path
     )
+
+    emit:
+        fastq = FASTERQ_DUMP_GEO.out.fastq
 }
