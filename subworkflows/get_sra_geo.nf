@@ -28,7 +28,8 @@ workflow GET_SRA_GEO {
     )
 
     GET_SRA_FROM_SRX.out.geo_sra
-    | splitCsv(skip:1)
+    // | splitCsv(skip:1)
+    | splitCsv()
     | set { ch_sra }
 
     PREFETCH_GEO (
@@ -38,4 +39,7 @@ workflow GET_SRA_GEO {
     FASTERQ_DUMP_GEO (
         PREFETCH_GEO.out.prefetch_path
     )
+
+    emit:
+        fastq = FASTERQ_DUMP_GEO.out.fastq
 }

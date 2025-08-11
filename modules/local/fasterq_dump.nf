@@ -1,6 +1,7 @@
 #!/usr/bin/env nextflow
 process FASTERQ_DUMP {
     tag "${asc_id}"
+    label 'process_high'
 
     container 'community.wave.seqera.io/library/sra-tools:3.2.0--7131354b4197d164'
 
@@ -8,7 +9,7 @@ process FASTERQ_DUMP {
     tuple val(meta), val(asc_id), path(prefetch_path)
 
     output:
-    tuple val(meta), val(asc_id), path("*fastq.gz")
+    tuple val(meta), val(asc_id), path("*fastq.gz")         , emit: fastq
 
     script:
     def prefix              = task.ext.prefix ?: "${meta}"

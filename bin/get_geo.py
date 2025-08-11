@@ -20,6 +20,7 @@ def get_suppl_file(asc_id: str,
     html = response.text
     
     link_elements = re.search(r'<pre>(.*?)</pre>', html, re.DOTALL)
+    print(html)
     pre_content = link_elements.group(1)
     links = re.findall(r'<a href="([^"]+)">', pre_content)
     full_links = [f"{suppl_data_link}" + link for link in links 
@@ -41,15 +42,16 @@ def get_data(asc_id: str,
         exist_ok=True
     )
 
-    gse = GEOparse.get_GEO(
-        geo=f"{asc_id}",
-        destdir="./")
+    gse = GEOparse.get_GEO(geo=f"{asc_id}", destdir="./")
+
+    print(gse)
 
     get_suppl_file(
         asc_id, 
         suppl_data_link,
         gse
     )
+
 
     get_metadata(
         asc_id,

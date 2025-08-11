@@ -1,6 +1,7 @@
 #!/usr/bin/env nextflow
 process GET_GEO {
     tag "${asc_id}"
+    label 'process_medium'
 
     container "community.wave.seqera.io/library/pip_geoparse_pandas:24e5b15a83985023"
 

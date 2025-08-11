@@ -1,5 +1,7 @@
 #!/usr/bin/env nextflow
 process GET_ASC {
+    label 'process_single'
+
     input:
     path(samplesheet)
 

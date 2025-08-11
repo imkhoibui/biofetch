@@ -7,8 +7,11 @@ include { CURL_FILES_FROM_LINK                   } from "${projectDir}/modules/l
 include { PREFETCH                               } from "${projectDir}/modules/local/prefetch.nf"
 include { FASTERQ_DUMP                           } from "${projectDir}/modules/local/fasterq_dump.nf"
 include { GET_SRA_GEO                            } from "${projectDir}/subworkflows/get_sra_geo.nf"
+include { CREATE_DESIGN                          } from "${projectDir}/modules/local/create_design.nf"
 
 workflow BIOFETCH {
+
+    ch_retrieved_fastq = Channel.empty()
 
     // retrieves ASC list
     if (file(params.input).exists()) {
@@ -27,11 +30,12 @@ workflow BIOFETCH {
 
     // divide asc_ids into databases
     ch_asc_list.branch { 
-        ENA: it[0] == "ERR"
-        SRA: it[0] == "SRR"
-        GEO: it[0] == "GSE"
+        ENA:    it[0] == "ERR"
+        SRA:    it[0] == "SRR"
+        GEO:    it[0] == "GSE"
+        DDBJ:   it[0] == "DDBJ"
+        ENCODE: it[0] == "ENCODE"
     }.set{ result }
-
 
     // metadata features for ena report
     def meta_features = []
@@ -40,18 +44,17 @@ workflow BIOFETCH {
             meta_features << item.key
         }
     }
-    def ena_result      = "result=" + params.ena_result
-    def ena_fields      = "fields=" + meta_features.join(',')
-    def ena_format      = "format=" + params.ena_format
-    def ena_download    = "download=" + params.ena_download
-    def ena_limit       = "limit=" + params.ena_limit
+    def ena_result      = "result="     + params.ena_result
+    def ena_fields      = "fields="     + meta_features.join(',')
+    def ena_format      = "format="     + params.ena_format
+    def ena_download    = "download="   + params.ena_download
+    def ena_limit       = "limit="      + params.ena_limit
 
     def meta_id = [ena_result, 
         ena_fields, ena_format, 
         ena_download, ena_limit].join("&")
 
     ch_enameta = Channel.of(meta_id)
-
 
     // db down for SRA
     if ( !params.skip_sra ) {
@@ -62,26 +65,40 @@ workflow BIOFETCH {
         FASTERQ_DUMP(
             PREFETCH.out.prefetch_path
         )
+
+        ch_retrieved_fastq.mix(FASTERQ_DUMP.out.fastq)
     }
 
-
-    // db down for ERR
+    // db down for ENA
     if ( !params.skip_ena ) {
         GET_ENA(
             result.ENA,
             ch_enameta.first()
         )
+        ch_retrieved_fastq.mix(GET_ENA.out.fastq)
     }
 
     // db down for GEO
     if ( !params.skip_geo ) {
-        GET_SRA_GEO (
-            result.GEO
+        if ( !params.skip_geo_fastq ) {
+            GET_SRA_GEO (
+                result.GEO
+            )
+            ch_retrieved_fastq.mix(GET_SRA_GEO.out.fastq)
+        } else {
+            GET_GEO (
+                result.GEO
+            )            
+        }
+    }
+
+
+    // make design file for downloaded fastq
+    ch_retrieved_fastq.view()
+
+    if ( !params.skip_design ) {    
+        CREATE_DESIGN(
+            ch_retrieved_fastq
         )
-        // ch_geo_links = GET_GEO.out.geo_data.splitText()
-        // CURL_FILES_FROM_LINK(
-        //     ch_geo_links,
-        //     GET_GEO.out.geo_folder
-        // )
     }
 }
