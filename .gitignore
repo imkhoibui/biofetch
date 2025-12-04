@@ -1,7 +1,6 @@
-.nextflow/*
-.nextflow/history
+.nextflow
 data/
 work/
 *log*
 results/
-script.sh
+*.sh
