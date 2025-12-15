@@ -1,5 +1,5 @@
 process ENA_DATAGET {
-    tag "${meta}"
+    tag "${run_id}"
     label 'process_low'
 
     conda "${moduleDir}/environment.yml"
@@ -8,15 +8,13 @@ process ENA_DATAGET {
         'community.wave.seqera.io/library/enabrowsertools:1.7.2--da63041b2d7f672c' }"
 
     input:
-    tuple val(meta), val(asc_id)
+    tuple val(source), val(id), val(run_id)
 
     output:
-    tuple val(meta), path("*.fastq.gz")         , emit: fastq
+    tuple val(source), val(id), val(run_id), path("${run_id}/*.fastq.gz")         , emit: fastq
 
     script:
     """
-    enaDataGet \\ 
-        -f fastq \\
-        ${asc_id}
+    enaDataGet.py -f fastq -m ${run_id}
     """
 }
