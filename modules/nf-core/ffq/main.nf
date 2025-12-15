@@ -5,7 +5,7 @@ process FFQ {
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/ffq:0.2.1--pyhdfd78af_0':
-        'biocontainers/ffq:0.2.1--pyhdfd78af_0' }"
+        'community.wave.seqera.io/library/ffq:0.3.1--dbe6a51200f14300' }"
 
     input:
     val ids
