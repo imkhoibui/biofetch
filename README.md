@@ -32,6 +32,6 @@ No header nor extra columns is needed.
 
 # Future improvements:
 
-- [] Add support for [DDBJ](https://www.ddbj.nig.ac.jp/index-e.html) accessions.
-- [] Create report to summarize the sequencing data downloaded
-- [] Module to output custom config based on downloaded files
+- [ ] Add support for [DDBJ](https://www.ddbj.nig.ac.jp/index-e.html) accessions.
+- [ ] Create report to summarize the sequencing data downloaded
+- [ ] Module to output custom config based on downloaded files
