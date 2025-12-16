@@ -1,11 +1,8 @@
 #!/usr/bin/env nextflow
 include { GET_GEO                                } from '../modules/local/get_geo'
-include { GET_GEO_SRX                            } from '../modules/local/extract_srx'
 include { GET_ENA                                } from '../modules/local/get_ena'
-include { CURL_FILES_FROM_LINK                   } from '../modules/local/curl_files'
 include { SRATOOLS_PREFETCH                      } from '../modules/nf-core/sratools/prefetch'
-include { SRATOOLS_FASTERQDUMP                  } from '../modules/nf-core/sratools/fasterqdump'
-include { GET_SRA_GEO                            } from '../subworkflows/get_sra_geo'
+include { SRATOOLS_FASTERQDUMP                   } from '../modules/nf-core/sratools/fasterqdump'
 include { CREATE_DESIGN                          } from '../modules/local/create_design'
 include { FETCH_RUN_ACCESSION                    } from '../modules/local/fetch_run_accession'
 include { FFQ                                    } from '../modules/nf-core/ffq/main'
@@ -75,22 +72,30 @@ workflow BIOFETCH {
         ch_run_accession.ENA
     )
 
-    ch_run_accession.NCBI.view()
+    ch_retrieved_fastq = ch_retrieved_fastq.mix(ENA_DATAGET.out.fastq)
+
+    ch_run_accession.NCBI.map{ meta -> tuple(meta, meta.run_id) }
+        .set{ ch_sratools_prefetech_input }
 
     SRATOOLS_PREFETCH(
-        ch_run_accession.NCBI.map{ source, id, run_id -> [id, run_id]},
-        Channel.empty(),
-        Channel.empty()
+        ch_sratools_prefetech_input,
+        [],
+        []
     )
     SRATOOLS_FASTERQDUMP(
         SRATOOLS_PREFETCH.out.sra,
-        Channel.empty(),
-        Channel.empty()
+        [],
+        []
     )
 
-    // if ( !params.skip_design ) {    
-    //     CREATE_DESIGN(
-    //         ch_retrieved_fastq
-    //     )
-    // }
+    ch_retrieved_fastq = ch_retrieved_fastq.mix(SRATOOLS_FASTERQDUMP.out.reads)
+    ch_retrieved_fastq.map{ meta, reads -> [source:meta.source, id:meta.id] }
+        .unique()
+        .set{ ch_design_input }
+
+    if ( !params.skip_design ) {    
+        CREATE_DESIGN(
+            ch_design_input
+        )
+    }
 }

@@ -5,7 +5,7 @@ process SRATOOLS_PREFETCH {
     conda "${moduleDir}/environment.yml"
     container "${ workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container ?
         'https://depot.galaxyproject.org/singularity/sra-tools:3.1.0--h9f5acd7_0' :
-        'biocontainers/sra-tools:3.1.0--h9f5acd7_0' }"
+        'community.wave.seqera.io/library/sra-tools:3.2.1--2063130dadd340c5' }"
 
     input:
     tuple val(meta), val(id)
