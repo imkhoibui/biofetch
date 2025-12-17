@@ -1,3 +1,0 @@
-workflow GET_SRA {
-    
-}
