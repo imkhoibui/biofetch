@@ -30,6 +30,14 @@ PRJNAXXXXXX
 
 No header nor extra columns is needed.
 
+## Creating samplesheet output:
+When run with default (`skip_design` = false), the output directory contain samplesheet for each `project_id` as follows:
+
+```
+project,run,fastq_1,fastq_2
+PRJEBXXXXXX,ERRXXXXXX,/path/to/ERRXXXXXX_R1.fastq.gz,/path/to/ERRXXXXXX_R2.fastq.gz
+```
+
 # Future improvements:
 
 - [ ] Add support for [DDBJ](https://www.ddbj.nig.ac.jp/index-e.html) accessions.
